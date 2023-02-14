@@ -8,7 +8,7 @@
 		box-sizing: border-box
 
 *::-webkit-input-placeholder
-	color: #505050
+	color: #313131
 	opacity: 1
 	transition: opacity .25s
 
@@ -16,7 +16,7 @@
 	opacity: 0
 
 *:-moz-placeholder
-	color: #505050
+	color: #313131
 	opacity: 1
 	transition: opacity .25s
 
@@ -24,7 +24,7 @@
 	opacity: 0
 
 *::-moz-placeholder
-	color: #505050
+	color: #313131
 	opacity: 1
 	transition: opacity .25s
 
@@ -32,7 +32,7 @@
 	opacity: 0
 
 *:-ms-input-placeholder
-	color: #505050
+	color: #313131
 	opacity: 1
 	transition: opacity .25s
 
@@ -41,10 +41,10 @@
 
 body input:focus:required:invalid,
 body textarea:focus:required:invalid
-	color: #505050
+	color: #313131
 body input:required:valid,
 body textarea:required:valid
-	color: #505050
+	color: #313131
 
 *, body
 	-webkit-tap-highlight-color: rgba(0,0,0,0)
@@ -62,6 +62,10 @@ body
 	font-family: $default-font
 	overflow-x: hidden
 	opacity: 1
+	font-feature-settings: 'pnum' on, 'lnum' on
+	color: #313131
+	&.is-fixed
+		overflow: hidden
 
 h1,h2,h3,h4,h5,h6
 	font-size: 1em
@@ -70,3 +74,8 @@ h1,h2,h3,h4,h5,h6
 
 .container
 	display: flex
+	align-items: center
+	flex-wrap: wrap
+	max-width: 1310px
+	padding: 0 15px
+	margin: 0 auto

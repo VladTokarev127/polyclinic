@@ -1,0 +1,348 @@
+.header
+	position: relative
+	z-index: 9
+	&__top
+		background-color: #fff
+		padding-top: 30px
+		padding-bottom: 10px
+		@include media-breakpoint-down(md)
+			padding-top: 10px
+		.container
+			align-items: flex-start
+	&__mobile
+		display: none
+		@include media-breakpoint-down(md)
+			position: absolute
+			left: 0
+			top: 100%
+			width: 100%
+			max-height: calc(100vh - 100%)
+			height: 100vh
+			padding-bottom: 15px
+			overflow: auto
+			.header__main
+				display: flex
+			.header__info
+				display: block
+		.container
+			display: block
+	&__logo
+		display: flex
+		align-items: center
+		text-decoration: none
+		flex: 0 325px
+		@include media-breakpoint-down(xs)
+			flex: 0 auto
+		&-img
+			font-size: 0
+			line-height: 0
+			margin-right: 20px
+		&-content
+			flex: 0 217px
+			@include media-breakpoint-down(xs)
+				display: none
+		&-title
+			margin-bottom: 5px
+			font-size: 25px
+			font-feature-settings: 'pnum' on, 'lnum' on
+			font-weight: 600
+			color: #2bade7
+			margin-bottom: 5px
+		&-text
+			font-size: 10px
+			font-weight: 400
+			line-height: 1.5
+			font-feature-settings: 'pnum' on, 'lnum' on
+			color: #313131
+	&__main
+		display: flex
+		flex-wrap: wrap
+		flex: 0 465px
+		margin: 0 auto
+		@include media-breakpoint-down(xl)
+			margin-right: 0
+			flex: 0 50%
+		@include media-breakpoint-down(md)
+			display: none
+	&__mail
+		font-weight: 500
+		font-feature-settings: 'pnum' on, 'lnum' on
+		@include media-breakpoint-down(xs)
+			flex: 1 100%
+		a
+			padding-left: 30px
+			position: relative
+			color: #313131
+			text-decoration: none
+			transition: .3s ease-in-out
+			&::after
+				position: absolute
+				left: 0
+				top: 50%
+				transform: translate(0,-50%)
+				content: ''
+				width: 24px
+				height: 24px
+				background-image: url(../img/mail.svg)
+				background-repeat: no-repeat
+				background-position: center
+			&:hover,
+			&:focus-visible
+				color: #2bade7
+	&__vers
+		margin-left: auto
+		flex: 0 244px
+		@include media-breakpoint-down(xs)
+			margin-left: 0
+			margin-top: 10px
+		a
+			height: 24px
+			width: 100%
+			display: flex
+			align-items: center
+			justify-content: center
+			text-align: center
+			text-decoration: none
+			transition: .3s ease-in-out
+			border: 1px solid #313131
+			border-radius: 25px
+			font-weight: 500
+			font-feature-settings: 'pnum' on, 'lnum' on
+			color: #313131
+	&__search
+		margin-top: 25px
+		position: relative
+		display: flex
+		align-items: center
+		flex: 1 100%
+		margin-bottom: 12px
+		&-input
+			padding: 0
+			padding-bottom: 7px
+			border: 0
+			border-bottom: 0.5px solid #313131
+			width: 100%
+			font-family: inherit
+			font-weight: 600
+			font-feature-settings: 'pnum' on, 'lnum' on
+			color: #313131
+		&-btn
+			position: absolute
+			right: 0
+			border: 0
+			padding: 0
+			background: 0
+			font-size: 0
+			line-height: 0
+	&__langs
+		margin-left: auto
+		font-weight: 500
+		font-feature-settings: 'pnum' on, 'lnum' on
+		color: #313131
+		a
+			color: #313131
+			text-decoration: none
+			transition: .3s ease-in-out
+			&:hover,
+			&:focus-visible
+				color: #2bade7
+	&__info
+		flex: 0 auto
+		@include media-breakpoint-down(xl)
+			margin-left: auto
+		@include media-breakpoint-down(md)
+			display: none
+		&-row
+			margin-left: 37px
+			position: relative
+			margin-bottom: 6px
+			font-size: 25px
+			font-weight: 500
+			font-feature-settings: 'pnum' on, 'lnum' on
+			color: #313131
+			a
+				font-weight: 600
+				color: #2bade7
+				text-decoration: none
+				transition: .3s ease-in-out
+				@include media-breakpoint-down(xs)
+					display: block
+				&:hover,
+				&:focus-visible
+					color: #313131
+			&:nth-child(2)
+				margin-bottom: 11px
+				padding-bottom: 6px
+				border-bottom: 1px solid #313131
+	&__tel
+		&::after
+			position: absolute
+			left: -37px
+			top: 50%
+			transform: translate(0, -50%)
+			content: ''
+			width: 24px
+			height: 24px
+			background-image: url(../img/tel.svg)
+			background-repeat: no-repeat
+			background-position: center
+	&__wsp
+		&::after
+			position: absolute
+			left: -37px
+			top: 50%
+			transform: translate(0, calc(-50% - 3px))
+			content: ''
+			width: 24px
+			height: 24px
+			background-image: url(../img/wsp.svg)
+			background-repeat: no-repeat
+			background-position: center
+	&__address
+		margin-left: 37px
+		font-weight: 500
+	&__bottom
+		background-color: #2bade7
+		padding: 34px 0
+		@include media-breakpoint-down(md)
+			display: none
+	&__nav
+		width: 100%
+		nav
+			& > ul
+				margin: 0
+				padding: 0
+				list-style-type: none
+				display: flex
+				align-items: center
+				justify-content: space-between
+				@include media-breakpoint-down(md)
+					display: block
+					padding-top: 15px
+					padding-bottom: 15px
+				& > li
+					font-size: 18px
+					font-feature-settings: 'pnum' on, 'lnum' on
+					font-weight: 500
+					@include media-breakpoint-down(lg)
+						font-size: 16px
+					@include media-breakpoint-down(md)
+						font-size: 18px
+						margin-bottom: 10px
+						&:last-child
+							margin-bottom: 0
+					&.menu-item-has-children
+						& > a
+							padding-right: 15px
+							position: relative
+							&::after
+								position: absolute
+								right: 0
+								top: 6px
+								content: ''
+								width: 10px
+								height: 10px
+								background-image: url(../img/menu-arrow.svg)
+								background-repeat: no-repeat
+								background-position: center
+								@include media-breakpoint-down(md)
+									background-image: url(../img/menu-arrow-mobile.svg)
+						ul
+							display: none
+							position: absolute
+							left: 50%
+							transform: translate(-50%, 0)
+							top: 100%
+							margin: 0
+							padding: 0
+							list-style-type: none
+							background-color: #2bade7
+							width: 100%
+							padding: 10px
+							@include media-breakpoint-down(md)
+								position: static
+								transform: translate(0,0)
+								background: 0
+							& > li
+								font-size: 18px
+								font-feature-settings: 'pnum' on, 'lnum' on
+								font-weight: 500
+								@include media-breakpoint-down(lg)
+									font-size: 16px
+								@include media-breakpoint-down(md)
+									font-size: 18px
+								& > a
+									color: #fff
+									text-decoration: none
+									transition: .3s ease-in-out
+									@include media-breakpoint-down(md)
+										color: #313131
+									&:hover,
+									&:focus-visible
+										color: #313131
+										@include media-breakpoint-down(md)
+											color: #2bade7
+					& > a
+						color: #fff
+						text-decoration: none
+						transition: .3s ease-in-out
+						@include media-breakpoint-down(md)
+							color: #313131
+						&:hover,
+						&:focus-visible
+							color: #313131
+							@include media-breakpoint-down(md)
+								color: #2bade7
+	&__btn
+		align-self: center
+		margin-left: auto
+		width: 44px
+		height: 44px
+		display: none
+		align-items: center
+		justify-content: center
+		text-align: center
+		text-decoration: none
+		transition: .3s ease-in-out
+		background: #2BADE7
+		border-radius: 50%
+		border: 0
+		cursor: pointer
+		@include media-breakpoint-down(md)
+			display: flex
+		&:hover,
+		&:focus-visible,
+		&.is-active
+			background-color: #fed6bc
+		&.is-active
+			span
+				background: transparent
+				transform: rotate(90deg)
+				&::before
+					transform: rotate(45deg)
+					top: 0
+					background-color: #fff
+				&::after
+					transform: rotate(-45deg)
+					bottom: 0
+					background-color: #fff
+		span
+			display: block
+			position: relative
+			width: 25px
+			height: 3px
+			transition: .3s
+			background-color: #fff
+			&::before,&::after
+				content: ''
+				display: block
+				width: 25px
+				height: 3px
+				background: #fff
+				position: absolute
+				left: 0px
+				transition: all 0.3s linear
+			&::before
+				top: -8px
+			&::after
+				bottom: -8px
