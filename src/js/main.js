@@ -50,4 +50,32 @@ $(function() {
 		}
 	});
 
+	const photoSwiper = new Swiper('.photo__swiper', {
+		slidesPerView: 1,
+		spaceBetween: 40,
+		navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
+		},
+		breakpoints: {
+			320: {
+				slidesPerView: 1,
+			},
+			768: {
+				slidesPerView: 2,
+			},
+			1200: {
+				slidesPerView: 3,
+			}
+		}
+	});
+
+	$('.photo__img').magnificPopup({
+		type: 'image',
+		fixedContentPos: false,
+		gallery: {
+			enabled:true
+		}
+	});
+
 });
