@@ -13,6 +13,7 @@
 		display: none
 		@include media-breakpoint-down(md)
 			position: absolute
+			background-color: #fff
 			left: 0
 			top: 100%
 			width: 100%
@@ -40,7 +41,7 @@
 		&-content
 			flex: 0 217px
 			@include media-breakpoint-down(xs)
-				display: none
+				// display: none
 		&-title
 			margin-bottom: 5px
 			font-size: 25px
@@ -48,6 +49,8 @@
 			font-weight: 600
 			color: #2bade7
 			margin-bottom: 5px
+			@include media-breakpoint-down(xs)
+				font-size: 20px
 		&-text
 			font-size: 10px
 			font-weight: 400
@@ -63,7 +66,10 @@
 			margin-right: 0
 			flex: 0 50%
 		@include media-breakpoint-down(md)
-			display: none
+			// display: none
+			flex: 1 100%
+			margin-top: 20px
+			margin-bottom: 20px
 	&__mail
 		font-weight: 500
 		font-feature-settings: 'pnum' on, 'lnum' on
@@ -151,7 +157,8 @@
 		@include media-breakpoint-down(xl)
 			margin-left: auto
 		@include media-breakpoint-down(md)
-			display: none
+			// display: none
+			flex: 1 100%
 		&-row
 			margin-left: 37px
 			position: relative
@@ -205,7 +212,7 @@
 		background-color: #2bade7
 		padding: 34px 0
 		@include media-breakpoint-down(md)
-			display: none
+			// display: none
 	&__nav
 		width: 100%
 		nav
@@ -218,8 +225,8 @@
 				justify-content: space-between
 				@include media-breakpoint-down(md)
 					display: block
-					padding-top: 15px
-					padding-bottom: 15px
+					// padding-top: 15px
+					// padding-bottom: 15px
 				& > li
 					font-size: 18px
 					font-feature-settings: 'pnum' on, 'lnum' on
@@ -232,6 +239,7 @@
 						&:last-child
 							margin-bottom: 0
 					&.menu-item-has-children
+						position: relative
 						& > a
 							padding-right: 15px
 							position: relative
@@ -246,7 +254,7 @@
 								background-repeat: no-repeat
 								background-position: center
 								@include media-breakpoint-down(md)
-									background-image: url(../img/menu-arrow-mobile.svg)
+									// background-image: url(../img/menu-arrow-mobile.svg)
 						ul
 							display: none
 							position: absolute
@@ -259,6 +267,7 @@
 							background-color: #2bade7
 							width: 100%
 							padding: 10px
+							min-width: max-content
 							@include media-breakpoint-down(md)
 								position: static
 								transform: translate(0,0)
@@ -279,20 +288,20 @@
 										color: #313131
 									&:hover,
 									&:focus-visible
-										color: #313131
+										// color: #313131
 										@include media-breakpoint-down(md)
-											color: #2bade7
+											// color: #2bade7
 					& > a
 						color: #fff
 						text-decoration: none
 						transition: .3s ease-in-out
 						@include media-breakpoint-down(md)
-							color: #313131
+							// color: #313131
 						&:hover,
 						&:focus-visible
 							color: #313131
 							@include media-breakpoint-down(md)
-								color: #2bade7
+								// color: #2bade7
 	&__btn
 		align-self: center
 		margin-left: auto
@@ -309,7 +318,7 @@
 		border: 0
 		cursor: pointer
 		@include media-breakpoint-down(md)
-			display: flex
+			// display: flex
 		&:hover,
 		&:focus-visible,
 		&.is-active

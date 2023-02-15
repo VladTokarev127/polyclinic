@@ -27,6 +27,13 @@
 	<?php wp_head(); ?>
 </head>
 
+<?php
+	$tel = get_field('tel', 'options');
+	$result = preg_replace('/(?:\G|^)[+\d]*\K[^:+\d]/m', '', $tel);
+	$wa = get_field('wa', 'options');
+	$waresult = preg_replace('/(?:\G|^)[+\d]*\K[^:+\d]/m', '', $wa);
+?>
+
 <body <?php body_class(); ?>>
 
 	<div class="wrapper">
@@ -37,70 +44,38 @@
 				<div class="container">
 
 					<div class="header__main">
-						<div class="header__mail"><a href="mailto:gorp3@mail.ru">gorp3@mail.ru</a></div>
-						<div class="header__vers"><a href="#">Версия для слабовидящих</a></div>
+						<div class="header__mail"><a href="mailto:<?php the_field('mail', 'options'); ?>"><?php the_field('mail', 'options'); ?></a></div>
+						<div class="header__vers"><a href="<?php the_field('vers', 'options'); ?>"><?php pll_e('Версия для слабовидящих'); ?></a></div>
 						<form action="/" class="header__search">
-							<input type="text" name="s" placeholder="Поиск..." class="header__search-input" required>
-							<button type="submit" class="header__search-btn"><img src="img/loop.svg" alt=""></button>
+							<input type="text" name="s" placeholder="<?php pll_e('Поиск...'); ?>" class="header__search-input" required>
+							<button type="submit" class="header__search-btn"><img src="/wp-content/themes/polyclinic/img/loop.svg" alt=""></button>
 						</form>
 						<div class="header__langs">
-							<a href="#">Рус</a> / <a href="#">Қаз</a>
+							<?php
+								$list = pll_the_languages( array( 'raw' => 1, 'hide_if_empty' => 0 ) );
+								$count = count($list) - 1;
+								$index = 0;
+							?>
+							<?php foreach($list as $key=>$item): ?>
+								<a href="<?php echo $item['url']; ?>"><?php echo $item['name']; ?></a><?php if($count != $index): ?> / <?php endif; ?>
+								<?php $index++; ?>
+							<?php endforeach; ?>
 						</div>
 					</div>
 					<div class="header__nav">
 						<nav>
-							<ul>
-								<li><a href="#">Главная</a></li>
-								<li class="menu-item-has-children">
-									<a href="#">О поликлинике</a>
-									<ul>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-									</ul>
-								</li>
-								<li class="menu-item-has-children">
-									<a href="#">Пациенту</a>
-									<ul>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Новости</a></li>
-								<li><a href="#">Комплаенс-служба</a></li>
-								<li class="menu-item-has-children">
-									<a href="#">Гос. закупки</a>
-									<ul>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-									</ul>
-								</li>
-								<li class="menu-item-has-children">
-									<a href="#">Услуги</a>
-									<ul>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-									</ul>
-								</li>
-								<li class="menu-item-has-children">
-									<a href="#">Гос. символы</a>
-									<ul>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Контакты</a></li>
-							</ul>
+							<?php 
+								wp_nav_menu([
+									'menu'            => 'header_menu',
+									'container'       => false,
+								]);
+							?>
 						</nav>
 					</div>
 					<div class="header__info">
-						<div class="header__info-row header__tel">Регистратура: <a href="tel:87273331477">8 (727) 333-14-77</a></div>
-						<div class="header__info-row header__wsp">WhatsApp: <a href="https://wa.me/87273331477">8 (727) 333-14-77</a></div>
-						<div class="header__address">ул. Розыбакиева 74, ориентир угол улицы Жамбыла</div>
+						<div class="header__info-row header__tel"><?php pll_e('Регистратура'); ?> <a href="tel:<?php echo $result; ?>"><?php echo $tel; ?></a></div>
+						<div class="header__info-row header__wsp"><?php pll_e('WhatsApp'); ?>: <a href="https://wa.me/<?php echo $waresult; ?>"><?php echo $wa; ?></a></div>
+						<div class="header__address"><?php pll_e('Адрес'); ?></div>
 					</div>
 
 				</div>
@@ -108,29 +83,37 @@
 
 			<div class="header__top">
 				<div class="container">
-					<a href="/" class="header__logo">
-						<div class="header__logo-img"><img src="img/logo.png" alt=""></div>
+					<a href="<?php echo pll_home_url(pll_current_language()); ?>" class="header__logo">
+						<div class="header__logo-img"><img src="<?php echo esc_url(get_field('logo', 'options')['url']); ?>" alt="<?php echo get_field('logo', 'options')['alt']; ?>"></div>
 						<div class="header__logo-content">
-							<div class="header__logo-title">Городская поликлиника №3</div>
-							<div class="header__logo-text">Управление общественного <br>здоровья <b>г. Алматы</b></div>
+							<div class="header__logo-title"><?php pll_e('Заголовок логотипа'); ?></div>
+							<div class="header__logo-text"><?php pll_e('Текст логотипа'); ?></div>
 						</div>
 					</a>
 					<button class="header__btn"><span></span></button>
 					<div class="header__main">
-						<div class="header__mail"><a href="mailto:gorp3@mail.ru">gorp3@mail.ru</a></div>
-						<div class="header__vers"><a href="#">Версия для слабовидящих</a></div>
+						<div class="header__mail"><a href="mailto:<?php the_field('mail', 'options'); ?>"><?php the_field('mail', 'options'); ?></a></div>
+						<div class="header__vers"><a href="<?php the_field('vers', 'options'); ?>"><?php pll_e('Версия для слабовидящих'); ?></a></div>
 						<form action="/" class="header__search">
-							<input type="text" name="s" placeholder="Поиск..." class="header__search-input" required>
-							<button type="submit" class="header__search-btn"><img src="img/loop.svg" alt=""></button>
+							<input type="text" name="s" placeholder="<?php pll_e('Поиск...'); ?>" class="header__search-input" required>
+							<button type="submit" class="header__search-btn"><img src="/wp-content/themes/polyclinic/img/loop.svg" alt=""></button>
 						</form>
 						<div class="header__langs">
-							<a href="#">Рус</a> / <a href="#">Қаз</a>
+							<?php
+								$list = pll_the_languages( array( 'raw' => 1, 'hide_if_empty' => 0 ) );
+								$count = count($list) - 1;
+								$index = 0;
+							?>
+							<?php foreach($list as $key=>$item): ?>
+								<a href="<?php echo $item['url']; ?>"><?php echo $item['name']; ?></a><?php if($count != $index): ?> / <?php endif; ?>
+								<?php $index++; ?>
+							<?php endforeach; ?>
 						</div>
 					</div>
 					<div class="header__info">
-						<div class="header__info-row header__tel">Регистратура: <a href="tel:87273331477">8 (727) 333-14-77</a></div>
-						<div class="header__info-row header__wsp">WhatsApp: <a href="https://wa.me/87273331477">8 (727) 333-14-77</a></div>
-						<div class="header__address">ул. Розыбакиева 74, ориентир угол улицы Жамбыла</div>
+						<div class="header__info-row header__tel"><?php pll_e('Регистратура'); ?>: <a href="tel:<?php echo $result; ?>"><?php echo $tel; ?></a></div>
+						<div class="header__info-row header__wsp"><?php pll_e('WhatsApp'); ?>: <a href="https://wa.me/<?php echo $waresult; ?>"><?php echo $wa; ?></a></div>
+						<div class="header__address"><?php pll_e('Адрес'); ?></div>
 					</div>
 				</div>
 			</div>
@@ -140,52 +123,12 @@
 
 					<div class="header__nav">
 						<nav>
-							<ul>
-								<li><a href="#">Главная</a></li>
-								<li class="menu-item-has-children">
-									<a href="#">О поликлинике</a>
-									<ul>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-									</ul>
-								</li>
-								<li class="menu-item-has-children">
-									<a href="#">Пациенту</a>
-									<ul>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Новости</a></li>
-								<li><a href="#">Комплаенс-служба</a></li>
-								<li class="menu-item-has-children">
-									<a href="#">Гос. закупки</a>
-									<ul>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-									</ul>
-								</li>
-								<li class="menu-item-has-children">
-									<a href="#">Услуги</a>
-									<ul>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-									</ul>
-								</li>
-								<li class="menu-item-has-children">
-									<a href="#">Гос. символы</a>
-									<ul>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-										<li><a href="#">lorem1</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Контакты</a></li>
-							</ul>
+							<?php 
+								wp_nav_menu([
+									'menu'            => 'header_menu',
+									'container'       => false,
+								]);
+							?>
 						</nav>
 					</div>
 

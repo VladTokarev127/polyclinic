@@ -52,3 +52,17 @@
 			'redirect'    => false
 		));
 	}
+
+	add_action('init', 'polylang_strings' );
+	function polylang_strings() {
+		pll_register_string('Регистратура', 'Регистратура', 'new_strings', true);
+		pll_register_string('WhatsApp', 'WhatsApp', 'new_strings', true);
+		pll_register_string('Версия для слабовидящих', 'Версия для слабовидящих', 'new_strings', true);
+		pll_register_string('Поиск...', 'Поиск...', 'new_strings', true);
+		pll_register_string('Заголовок логотипа', 'Заголовок логотипа', 'new_strings', true);
+		pll_register_string('Текст логотипа', 'Текст логотипа', 'new_strings', true);
+		pll_register_string('Адрес', 'Адрес', 'new_strings', true);
+		pll_register_string('Копирайт', 'Копирайт', 'new_strings', true);
+		pll_register_string('Разработчики', 'Разработчики', 'new_strings', true);
+		pll_register_string('Подробнее', 'Подробнее', 'new_strings', true);
+	}
